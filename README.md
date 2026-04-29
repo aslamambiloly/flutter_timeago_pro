@@ -49,13 +49,16 @@ flutter pub get
 import 'package:flutter_timeago_pro/flutter_timeago_pro.dart';
 
 // In any widget:
-Text(notification.createdAt.toTimeagoFormat())
+final dateTime = DateTime.now().subtract(const Duration(minutes: 25));
+Text(dateTime.toTimeagoFormat())
+// → "25m ago"
 ```
 
 ### Hide the time portion
 
 ```dart
-post.publishedAt.toTimeagoFormat(isShowTime: false);
+
+dateTime.toTimeagoFormat(isShowTime: false);
 // → "Friday" | "15 Jan" | "15 Jan 2024"
 ```
 
