@@ -17,6 +17,9 @@ class TimestampLocale {
   /// Suffix appended to minute count, e.g. "3m ago".
   final String minutesAgoSuffix;
 
+  /// Suffix appended to hour count, e.g. "2h ago".
+  final String hoursAgoSuffix;
+
   /// Label used for the previous calendar day.
   final String yesterday;
 
@@ -26,6 +29,7 @@ class TimestampLocale {
   const TimestampLocale({
     this.justNow = 'Just now',
     this.minutesAgoSuffix = 'm ago',
+    this.hoursAgoSuffix = 'h ago',
     this.yesterday = 'Yesterday',
     this.unknownTime = 'Unknown time',
   });
@@ -33,4 +37,8 @@ class TimestampLocale {
   /// Builds the "Xm ago" string. Override by subclassing if you need
   /// different grammar (e.g. "vor 3 Min.").
   String minutesAgo(int minutes) => '$minutes$minutesAgoSuffix';
+
+  /// Builds the "Xh ago" string. Override by subclassing if you need
+  /// different grammar (e.g. "vor 2 Std.").
+  String hoursAgo(int hours) => '$hours$hoursAgoSuffix';
 }

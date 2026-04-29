@@ -55,9 +55,9 @@ void main() {
       expect(result, 'Yesterday, 02:30 PM');
     });
 
-    test('yesterday with isShowTime:false → "Yesterday"', () {
+    test('yesterday with showTimeForOveraged:false → "Yesterday"', () {
       final result = ago(const Duration(days: 1))
-          .toTimeagoFormat(referenceTime: now, isShowTime: false);
+          .toTimeagoFormat(referenceTime: now, showTimeForOveraged: false);
       expect(result, 'Yesterday');
     });
 
@@ -75,9 +75,9 @@ void main() {
       expect(result, 'Sunday, 02:30 PM');
     });
 
-    test('6 days ago with isShowTime:false → weekday only', () {
+    test('6 days ago with showTimeForOveraged:false → weekday only', () {
       final result = ago(const Duration(days: 6))
-          .toTimeagoFormat(referenceTime: now, isShowTime: false);
+          .toTimeagoFormat(referenceTime: now, showTimeForOveraged: false);
       expect(result, 'Sunday');
     });
 
@@ -87,9 +87,9 @@ void main() {
       expect(result, '7 Jun, 02:30 PM');
     });
 
-    test('same year, isShowTime:false → "d MMM"', () {
+    test('same year, showTimeForOveraged:false → "d MMM"', () {
       final result = ago(const Duration(days: 8))
-          .toTimeagoFormat(referenceTime: now, isShowTime: false);
+          .toTimeagoFormat(referenceTime: now, showTimeForOveraged: false);
       expect(result, '7 Jun');
     });
 
@@ -99,10 +99,10 @@ void main() {
       expect(result, '5 Mar 2022, 02:30 PM');
     });
 
-    test('different year, isShowTime:false → "d MMM yyyy"', () {
+    test('different year, showTimeForOveraged:false → "d MMM yyyy"', () {
       final old = DateTime(2022, 3, 5, 14, 30);
       final result =
-          old.toTimeagoFormat(referenceTime: now, isShowTime: false);
+          old.toTimeagoFormat(referenceTime: now, showTimeForOveraged: false);
       expect(result, '5 Mar 2022');
     });
   });

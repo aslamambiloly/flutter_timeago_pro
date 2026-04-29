@@ -1,15 +1,20 @@
 # flutter_timeago_pro
 
+[![pub version](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro)
+[![GitHub forks](https://img.shields.io/github/forks/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/fork)
+[![GitHub issues](https://img.shields.io/github/issues-closed/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues)
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
 
 Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past the date is:
 
 
-| Age | Output | Output when `isShowTime: false` |
+| Age | Output | Output when `showTimeForOveraged: false` |
 |---|---|---|
 | < 1 minute | `Just now` | `Just now` |
 | < 1 hour | `45m ago` | `45m ago` |
@@ -33,7 +38,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^1.0.3
+  flutter_timeago_pro: ^1.1.0
 ```
 
 Then run:
@@ -58,7 +63,7 @@ Text(dateTime.toTimeagoFormat())
 
 ```dart
 
-dateTime.toTimeagoFormat(isShowTime: false);
+dateTime.toTimeagoFormat(showTimeForOveraged: false);
 // → "Friday" | "15 Jan" | "15 Jan 2024"
 ```
 
@@ -76,6 +81,7 @@ const bahasa = TimestampLocale(
   justNow: 'Baru saja',
   yesterday: 'Kemarin',
   minutesAgoSuffix: 'm lalu',
+  hoursAgoSuffix: 'j lalu',
   unknownTime: 'Waktu tidak diketahui',
 );
 
@@ -91,6 +97,14 @@ dateTime.toTimeagoFormat(
 );
 ```
 
+### Custom timeago limit
+
+```dart
+// Override the default 1-hour limit to 3 hours
+dateTime.toTimeagoFormat(timeagoLimit: const Duration(hours: 3));
+// Output for 2h 30m ago → "2h ago"
+```
+
 ---
 
 ## API
@@ -99,19 +113,21 @@ dateTime.toTimeagoFormat(
 
 ```dart
 String toTimeagoFormat({
-  bool isShowTime = true,
+  bool showTimeForOveraged = true,
   TimestampLocale locale = const TimestampLocale(),
   String timePattern = 'hh:mm a',
   DateTime? referenceTime,
+  Duration timeagoLimit = const Duration(hours: 1),
 })
 ```
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
-| `isShowTime` | `bool` | `true` | Append the time portion to the label |
+| `showTimeForOveraged` | `bool` | `true` | Append the time portion to the label |
 | `locale` | `TimestampLocale` | English defaults | Customise "Just now", "Yesterday", etc. |
 | `timePattern` | `String` | `'hh:mm a'` | Any `intl` `DateFormat` pattern |
 | `referenceTime` | `DateTime?` | `DateTime.now()` | Anchor for relative comparison |
+| `timeagoLimit` | `Duration` | `const Duration(hours: 1)` | Maximum age to show as "Xm/Xh ago" |
 
 ### `TimestampLocale`
 
@@ -119,6 +135,7 @@ String toTimeagoFormat({
 const TimestampLocale({
   String justNow = 'Just now',
   String minutesAgoSuffix = 'm ago',
+  String hoursAgoSuffix = 'h ago',
   String yesterday = 'Yesterday',
   String unknownTime = 'Unknown time',
 });

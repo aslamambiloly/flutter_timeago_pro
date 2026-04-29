@@ -26,7 +26,7 @@ import 'timestamp_locale.dart';
 ///
 /// ### Hide the time portion
 /// ```dart
-/// post.publishedAt.toTimeagoFormat(isShowTime: false);
+/// post.publishedAt.toTimeagoFormat(showTimeForOveraged: false);
 /// // → "Friday" / "15 Jan" / "15 Jan 2024"
 /// ```
 ///
@@ -49,17 +49,20 @@ extension DateTimeFormatting on DateTime? {
   /// Returns a human-friendly notification timestamp string relative to now.
   ///
   /// Parameters:
-  /// - [isShowTime] — whether to append the time of day. Defaults to `true`.
+  /// - [showTimeForOveraged] — whether to append the time of day. Defaults to `true`.
   /// - [locale] — override labels (for i18n / custom wording).
   /// - [timePattern] — `intl` [DateFormat] pattern for the time portion.
   ///   Defaults to `'hh:mm a'` (12-hour with AM/PM).
   /// - [referenceTime] — the "now" used for comparison. Useful for testing
   ///   or showing relative times against a non-current anchor.
+  /// - [timeagoLimit] — the maximum age for which the timeago format ("Xm ago") is used.
+  ///   Defaults to 1 hour. After this limit, it falls back to 'Today', 'Yesterday', etc.
   String toTimeagoFormat({
-    bool isShowTime = true,
+    bool showTimeForOveraged = true,
     TimestampLocale locale = const TimestampLocale(),
     String timePattern = 'hh:mm a',
     DateTime? referenceTime,
+    Duration timeagoLimit = const Duration(hours: 1),
   }) {
     if (this == null) return locale.unknownTime;
 
@@ -73,9 +76,13 @@ extension DateTimeFormatting on DateTime? {
       return locale.justNow;
     }
 
-    // ── < 1 hour  ────────────────────────────────────────────────────────────
-    if (difference.inHours < 1) {
-      return locale.minutesAgo(difference.inMinutes);
+    // ── Less than timeagoLimit (default: 1 hour) ────────────────────────────
+    if (difference.compareTo(timeagoLimit) < 0) {
+      if (difference.inHours < 1) {
+        return locale.minutesAgo(difference.inMinutes);
+      } else {
+        return locale.hoursAgo(difference.inHours);
+      }
     }
 
     // ── Today ────────────────────────────────────────────────────────────────
@@ -86,23 +93,25 @@ extension DateTimeFormatting on DateTime? {
     // ── Yesterday ────────────────────────────────────────────────────────────
     final yesterday = now.subtract(const Duration(days: 1));
     if (DateUtils.isSameDay(dateTime, yesterday)) {
-      return isShowTime ? '${locale.yesterday}, $timeFormat' : locale.yesterday;
+      return showTimeForOveraged
+          ? '${locale.yesterday}, $timeFormat'
+          : locale.yesterday;
     }
 
     // ── Within the past 7 days (same week feel) ──────────────────────────────
     if (difference.inDays < 7) {
       final weekday = DateFormat('EEEE').format(dateTime); // "Monday"
-      return isShowTime ? '$weekday, $timeFormat' : weekday;
+      return showTimeForOveraged ? '$weekday, $timeFormat' : weekday;
     }
 
     // ── Same calendar year ───────────────────────────────────────────────────
     if (dateTime.year == now.year) {
       final date = DateFormat('d MMM').format(dateTime); // "15 Jan"
-      return isShowTime ? '$date, $timeFormat' : date;
+      return showTimeForOveraged ? '$date, $timeFormat' : date;
     }
 
     // ── Different year ───────────────────────────────────────────────────────
     final date = DateFormat('d MMM yyyy').format(dateTime); // "15 Jan 2024"
-    return isShowTime ? '$date, $timeFormat' : date;
+    return showTimeForOveraged ? '$date, $timeFormat' : date;
   }
 }

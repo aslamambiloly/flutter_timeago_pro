@@ -1,6 +1,14 @@
+## 1.1.0
+
+* Added `hoursAgoSuffix` to `TimestampLocale`
+* Added `timeagoLimit` parameter to `toTimeagoFormat()`
+* Added support for hours to timeago format
+* Fix timeagoformat to work with hours
+* Update Documentation and README.md
+
 ## 1.0.3
 
-* Bug fixes and i₹mprovements
+* Bug fixes and improvements
 
 ## 1.0.2
 
@@ -15,5 +23,5 @@
 
 * Initial release.
 * `toTimeagoFormat()` extension on `DateTime?`.
-* Supports `isShowTime`, `locale`, `timePattern`, and `referenceTime` parameters.
+* Supports `showTimeForOveraged`, `locale`, `timePattern`, and `referenceTime` parameters.
 * `TimestampLocale` for full i18n / custom wording.

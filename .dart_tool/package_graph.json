@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "flutter_timeago_pro",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "dependencies": [
         "flutter",
         "intl"
@@ -186,7 +186,7 @@
     },
     {
       "name": "leak_tracker",
-      "version": "11.0.3",
+      "version": "11.0.2",
       "dependencies": [
         "clock",
         "collection",

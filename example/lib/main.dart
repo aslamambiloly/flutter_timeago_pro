@@ -39,6 +39,7 @@ class _DemoPage extends StatelessWidget {
       justNow: 'Baru saja',
       yesterday: 'Kemarin',
       minutesAgoSuffix: 'm lalu',
+      hoursAgoSuffix: 'j lalu',
       unknownTime: 'Waktu tidak diketahui',
     );
 
@@ -47,18 +48,18 @@ class _DemoPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _SectionHeader('Default (isShowTime: true)'),
+          _SectionHeader('Default (showTimeForOveraged: true)'),
           for (final (label, dt) in timestamps)
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(),
             ),
           const SizedBox(height: 24),
-          _SectionHeader('isShowTime: false'),
+          _SectionHeader('showTimeForOveraged: false'),
           for (final (label, dt) in timestamps)
             _TimestampTile(
               label: label,
-              value: dt.toTimeagoFormat(isShowTime: false),
+              value: dt.toTimeagoFormat(showTimeForOveraged: false),
             ),
           const SizedBox(height: 24),
           _SectionHeader('Custom locale (Bahasa Indonesia)'),
@@ -66,6 +67,13 @@ class _DemoPage extends StatelessWidget {
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(locale: idLocale),
+            ),
+          const SizedBox(height: 24),
+          _SectionHeader('Custom timeago limit (2 hours)'),
+          for (final (label, dt) in timestamps)
+            _TimestampTile(
+              label: label,
+              value: dt.toTimeagoFormat(timeagoLimit: const Duration(hours: 2)),
             ),
           const SizedBox(height: 24),
           _SectionHeader('24-hour clock (timePattern: "HH:mm")'),
