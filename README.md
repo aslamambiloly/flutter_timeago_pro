@@ -1,22 +1,28 @@
 # flutter_timeago_pro
 
-[![pub.dev](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![pub version](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro)
+[![GitHub forks](https://img.shields.io/github/forks/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/fork)
+[![GitHub issues](https://img.shields.io/github/issues-closed/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues)
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
 
 Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past the date is:
 
-| Age | Output |
-|---|---|
-| < 1 minute | `Just now` |
-| < 1 hour | `45m ago` |
-| Today | `02:30 PM` |
-| Yesterday | `Yesterday, 02:30 PM` |
-| 2–6 days ago | `Friday, 02:30 PM` |
-| Same year, > 1 week | `15 Jan, 02:30 PM` |
-| Different year | `15 Jan 2024, 02:30 PM` |
-| `null` | `Unknown time` |
+| Age | Output | Output (isShowTime: false) |
+|---|---|---|
+| < 1 minute | `Just now` | `Just now` |
+| < 1 hour | `45m ago` | `45m ago` |
+| Today | `02:30 PM` | `02:30 PM` |
+| Yesterday | `Yesterday, 02:30 PM` | `Yesterday` |
+| 2–6 days ago | `Friday, 02:30 PM` | `Friday` |
+| Same year, > 1 week | `15 Jan, 02:30 PM` | `15 Jan` |
+| Different year | `15 Jan 2025, 02:30 PM` | `15 Jan 2025` |
+| `null` | `Unknown time` | `Unknown time` |
 
 ---
 
@@ -26,7 +32,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^0.0.1
+  flutter_timeago_pro: ^1.0.0
 ```
 
 Then run:
@@ -122,6 +128,12 @@ Those packages are great but they keep emitting relative phrases (`"2 days ago"`
 
 ---
 
+## Contributing
+
+PRs and issues are welcome! Please open an issue first for significant changes.
+
+---
+
 ## License
 
-MIT — see [LICENSE](LICENSE).
+[MIT](LICENSE) © 2026 aslamambiloly

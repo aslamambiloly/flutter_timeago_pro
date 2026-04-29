@@ -1,4 +1,4 @@
-## 0.0.1
+## 1.0.0
 
 * Initial release.
 * `toTimeagoFormat()` extension on `DateTime?`.
