@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Bug fixes and i₹mprovements
+
 ## 1.0.2
 
 * Bug fixes and improvements
