@@ -19,14 +19,14 @@ import 'timestamp_locale.dart';
 ///
 /// ### Basic usage
 /// ```dart
-/// import 'package:flutter_timeago/flutter_timeago.dart';
+/// import 'package:flutter_timeago_pro/flutter_timeago_pro.dart';
 ///
-/// Text(notification.createdAt.toNotificationFormat());
+/// Text(notification.createdAt.toTimeagoFormat());
 /// ```
 ///
 /// ### Hide the time portion
 /// ```dart
-/// post.publishedAt.toNotificationFormat(isShowTime: false);
+/// post.publishedAt.toTimeagoFormat(isShowTime: false);
 /// // → "Friday" / "15 Jan" / "15 Jan 2024"
 /// ```
 ///
@@ -38,12 +38,12 @@ import 'timestamp_locale.dart';
 ///   minutesAgoSuffix: 'm lalu',
 ///   unknownTime: 'Waktu tidak diketahui',
 /// );
-/// dateTime.toNotificationFormat(locale: id);
+/// dateTime.toTimeagoFormat(locale: id);
 /// ```
 ///
 /// ### Custom time format
 /// ```dart
-/// dateTime.toNotificationFormat(timePattern: 'HH:mm'); // 24-hour
+/// dateTime.toTimeagoFormat(timePattern: 'HH:mm'); // 24-hour
 /// ```
 extension DateTimeFormatting on DateTime? {
   /// Returns a human-friendly notification timestamp string relative to now.
@@ -55,7 +55,7 @@ extension DateTimeFormatting on DateTime? {
   ///   Defaults to `'hh:mm a'` (12-hour with AM/PM).
   /// - [referenceTime] — the "now" used for comparison. Useful for testing
   ///   or showing relative times against a non-current anchor.
-  String toNotificationFormat({
+  String toTimeagoFormat({
     bool isShowTime = true,
     TimestampLocale locale = const TimestampLocale(),
     String timePattern = 'hh:mm a',
@@ -86,9 +86,7 @@ extension DateTimeFormatting on DateTime? {
     // ── Yesterday ────────────────────────────────────────────────────────────
     final yesterday = now.subtract(const Duration(days: 1));
     if (DateUtils.isSameDay(dateTime, yesterday)) {
-      return isShowTime
-          ? '${locale.yesterday}, $timeFormat'
-          : locale.yesterday;
+      return isShowTime ? '${locale.yesterday}, $timeFormat' : locale.yesterday;
     }
 
     // ── Within the past 7 days (same week feel) ──────────────────────────────

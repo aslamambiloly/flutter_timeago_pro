@@ -1,3 +1,3 @@
-# flutter_timeago_example
+# flutter_timeago_pro_example
 
 A new Flutter project.

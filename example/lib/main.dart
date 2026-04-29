@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_timeago/flutter_timeago.dart';
+import 'package:flutter_timeago_pro/flutter_timeago_pro.dart';
 
 void main() => runApp(const FlutterTimeagoDemo());
 
@@ -9,7 +9,7 @@ class FlutterTimeagoDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'flutter_timeago demo',
+      title: 'flutter_timeago_pro demo',
       theme: ThemeData.dark(useMaterial3: true),
       home: const _DemoPage(),
     );
@@ -43,7 +43,7 @@ class _DemoPage extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(title: const Text('flutter_timeago')),
+      appBar: AppBar(title: const Text('flutter_timeago_pro')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -51,28 +51,28 @@ class _DemoPage extends StatelessWidget {
           for (final (label, dt) in timestamps)
             _TimestampTile(
               label: label,
-              value: dt.toNotificationFormat(),
+              value: dt.toTimeagoFormat(),
             ),
           const SizedBox(height: 24),
           _SectionHeader('isShowTime: false'),
           for (final (label, dt) in timestamps)
             _TimestampTile(
               label: label,
-              value: dt.toNotificationFormat(isShowTime: false),
+              value: dt.toTimeagoFormat(isShowTime: false),
             ),
           const SizedBox(height: 24),
           _SectionHeader('Custom locale (Bahasa Indonesia)'),
           for (final (label, dt) in timestamps)
             _TimestampTile(
               label: label,
-              value: dt.toNotificationFormat(locale: idLocale),
+              value: dt.toTimeagoFormat(locale: idLocale),
             ),
           const SizedBox(height: 24),
           _SectionHeader('24-hour clock (timePattern: "HH:mm")'),
           for (final (label, dt) in timestamps)
             _TimestampTile(
               label: label,
-              value: dt.toNotificationFormat(timePattern: 'HH:mm'),
+              value: dt.toTimeagoFormat(timePattern: 'HH:mm'),
             ),
         ],
       ),

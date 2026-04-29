@@ -1,5 +1,5 @@
-name: flutter_timeago_example
-description: Example app for flutter_timeago package.
+name: flutter_timeago_pro_example
+description: Example app for flutter_timeago_pro package.
 publish_to: 'none'
 version: 1.0.0
 
@@ -10,5 +10,5 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_timeago:
+  flutter_timeago_pro:
     path: ../

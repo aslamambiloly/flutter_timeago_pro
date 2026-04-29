@@ -8,7 +8,7 @@
 ///   yesterday: 'Kemarin',
 ///   unknownTime: 'Waktu tidak diketahui',
 /// );
-/// dateTime.toNotificationFormat(locale: myLocale);
+/// dateTime.toTimeagoFormat(locale: myLocale);
 /// ```
 class TimestampLocale {
   /// Label returned when the difference is less than one minute.

@@ -1,10 +1,10 @@
 {
   "roots": [
-    "flutter_timeago"
+    "flutter_timeago_pro"
   ],
   "packages": [
     {
-      "name": "flutter_timeago",
+      "name": "flutter_timeago_pro",
       "version": "0.0.1",
       "dependencies": [
         "flutter",
@@ -60,6 +60,11 @@
         "sky_engine",
         "vector_math"
       ]
+    },
+    {
+      "name": "lints",
+      "version": "6.1.0",
+      "dependencies": []
     },
     {
       "name": "stream_channel",
@@ -222,11 +227,6 @@
     {
       "name": "vm_service",
       "version": "15.2.0",
-      "dependencies": []
-    },
-    {
-      "name": "lints",
-      "version": "6.1.0",
       "dependencies": []
     }
   ],
