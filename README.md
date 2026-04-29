@@ -13,7 +13,7 @@ A Flutter extension that formats `DateTime?` values into **human-friendly, conte
 
 Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past the date is:
 
-| Age | Output | Output (isShowTime: false) |
+| Age | Output | Output when `isShowTime: false` |
 |---|---|---|
 | < 1 minute | `Just now` | `Just now` |
 | < 1 hour | `45m ago` | `45m ago` |
@@ -32,7 +32,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^1.0.0
+  flutter_timeago_pro: ^1.0.1
 ```
 
 Then run:
