@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Updated Documentation and README.md
+
 ## 1.1.1
 
 * Bug fixes and improvements
@@ -8,7 +12,7 @@
 * Added `timeagoLimit` parameter to `toTimeagoFormat()`
 * Added support for hours to timeago format
 * Fix timeagoformat to work with hours
-* Update Documentation and README.md
+* Updated Documentation and README.md
 
 ## 1.0.3
 

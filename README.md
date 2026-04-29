@@ -30,23 +30,19 @@ Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_ti
 
 Those packages are great but they keep emitting relative phrases (`"2 days ago"`, `"a week ago"`) no matter how old the date is. For notifications, chat bubbles, or feed items, showing *"a month ago"* is less useful than showing the actual date. `flutter_timeago_pro` switches to absolute dates exactly when relative labels stop being helpful.
 
----
-
 ## Getting started
 
 Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^1.1.1
+  flutter_timeago_pro: ^1.1.2
 ```
 
 Then run:
 ```bash
 flutter pub get
 ```
-
----
 
 ## Usage
 
@@ -104,7 +100,6 @@ dateTime.toTimeagoFormat(
   referenceTime: DateTime(2024, 6, 15, 14, 30),
 );
 ```
----
 
 ## API
 
@@ -140,13 +135,10 @@ const TimestampLocale({
 });
 ```
 
----
-
 ## Contributing
 
 PRs and issues are welcome! Please open an issue first for significant changes.
 
----
 
 ## License
 

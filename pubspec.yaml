@@ -3,7 +3,7 @@ description: >
   A Flutter/Dart extension that formats DateTime into human-friendly
   adapting intelligently from "Just now" to weekday or full date
   depending on how far in the past the time is.
-version: 1.1.1
+version: 1.1.2
 homepage: https://github.com/aslamambiloly/flutter_timeago_pro
 
 environment:
