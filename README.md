@@ -1,17 +1,13 @@
 # flutter_timeago_pro
 
-[![pub version](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro)
-[![GitHub forks](https://img.shields.io/github/forks/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/fork)
-[![GitHub issues](https://img.shields.io/github/issues-closed/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues)
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
 
 Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past the date is:
+
 
 | Age | Output | Output when `isShowTime: false` |
 |---|---|---|
@@ -24,6 +20,11 @@ Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_ti
 | Different year | `15 Jan 2025, 02:30 PM` | `15 Jan 2025` |
 | `null` | `Unknown time` | `Unknown time` |
 
+
+## Why not `timeago` or `jiffy`?
+
+Those packages are great but they keep emitting relative phrases (`"2 days ago"`, `"a week ago"`) no matter how old the date is. For notifications, chat bubbles, or feed items, showing *"a month ago"* is less useful than showing the actual date. `flutter_timeago_pro` switches to absolute dates exactly when relative labels stop being helpful.
+
 ---
 
 ## Getting started
@@ -32,7 +33,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^1.0.1
+  flutter_timeago_pro: ^1.0.2
 ```
 
 Then run:
@@ -119,12 +120,6 @@ const TimestampLocale({
   String unknownTime = 'Unknown time',
 });
 ```
-
----
-
-## Why not `timeago` or `jiffy`?
-
-Those packages are great but they keep emitting relative phrases (`"2 days ago"`, `"a week ago"`) no matter how old the date is. For notifications, chat bubbles, or feed items, showing *"a month ago"* is less useful than showing the actual date. `flutter_timeago_pro` switches to absolute dates exactly when relative labels stop being helpful.
 
 ---
 
