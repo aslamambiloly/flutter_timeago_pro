@@ -1,3 +1,7 @@
+## 2.0.1
+
+* Added topics for a better indexing
+
 ## 2.0.0
 
 * Code refinements and enhanced test widget
