@@ -1,3 +1,9 @@
+## 2.0.0
+
+* Code refinements and enhanced test widget
+* Updated Documentation and README.md
+* Made Code coverage from 89% to 100%
+
 ## 1.1.2
 
 * Updated Documentation and README.md
