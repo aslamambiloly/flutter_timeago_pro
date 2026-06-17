@@ -3,11 +3,8 @@
 [![pub version](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
-[![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro)
-[![GitHub forks](https://img.shields.io/github/forks/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/fork)
-[![GitHub issues](https://img.shields.io/github/issues-closed/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/flutter_timeago_pro?style=flat)](https://github.com/aslamambiloly/flutter_timeago_pro/issues)
+[![codecov](https://codecov.io/gh/aslamambiloly/flutter_timeago_pro/graph/badge.svg?token=9O1DN1Z5GT)](https://codecov.io/gh/aslamambiloly/flutter_timeago_pro)
+
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
 
@@ -142,4 +139,4 @@ PRs and issues are welcome! Please open an issue first for significant changes.
 
 ## License
 
-[MIT](LICENSE) © 2026 aslamambiloly
+Made with 💛 by [aslamambiloly](https://github.com/aslamambiloly) © 2026
