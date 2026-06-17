@@ -154,4 +154,83 @@ void main() {
       expect(result, '12:30');
     });
   });
+
+  group('Hours ago (within timeagoLimit) —', () {
+    test(
+        '2 hours ago with default timeagoLimit → time string (falls through to Today)',
+        () {
+      // Default limit is 1h, so 2h ago bypasses timeago and shows time
+      final result =
+          ago(const Duration(hours: 2)).toTimeagoFormat(referenceTime: now);
+      expect(result, '12:30 PM');
+    });
+
+    test('90 minutes ago with extended timeagoLimit → "1h ago"', () {
+      // Extend limit to 3h so hoursAgo() is reached
+      final result = ago(const Duration(minutes: 90)).toTimeagoFormat(
+        referenceTime: now,
+        timeagoLimit: const Duration(hours: 3),
+      );
+      expect(result, '1h ago');
+    });
+
+    test('2 hours ago with extended timeagoLimit → "2h ago"', () {
+      final result = ago(const Duration(hours: 2)).toTimeagoFormat(
+        referenceTime: now,
+        timeagoLimit: const Duration(hours: 3),
+      );
+      expect(result, '2h ago');
+    });
+  });
+
+  group('Custom timeagoLimit —', () {
+    test(
+        '45 minutes ago with 30-minute limit → falls through to Today (time string)',
+        () {
+      final result = ago(const Duration(minutes: 45)).toTimeagoFormat(
+        referenceTime: now,
+        timeagoLimit: const Duration(minutes: 30),
+      );
+      expect(result, '01:45 PM');
+    });
+
+    test('10 minutes ago with 30-minute limit → "10m ago"', () {
+      final result = ago(const Duration(minutes: 10)).toTimeagoFormat(
+        referenceTime: now,
+        timeagoLimit: const Duration(minutes: 30),
+      );
+      expect(result, '10m ago');
+    });
+  });
+
+  group('Custom locale — hours —', () {
+    const de = TimestampLocale(
+      justNow: 'Gerade eben',
+      minutesAgoSuffix: ' Min. her',
+      hoursAgoSuffix: ' Std. her',
+      yesterday: 'Gestern',
+      unknownTime: 'Unbekannte Zeit',
+    );
+
+    test('hoursAgo with custom hoursAgoSuffix', () {
+      final result = ago(const Duration(hours: 2)).toTimeagoFormat(
+        referenceTime: now,
+        locale: de,
+        timeagoLimit: const Duration(hours: 3),
+      );
+      expect(result, '2 Std. her');
+    });
+  });
+
+  group('TimestampLocale defaults —', () {
+    test('hoursAgo() returns correct string with default suffix', () {
+      const locale = TimestampLocale();
+      expect(locale.hoursAgo(3), '3h ago');
+    });
+
+    test('minutesAgo() returns correct string with default suffix', () {
+      const locale = TimestampLocale();
+      expect(locale.minutesAgo(15), '15m ago');
+    });
+  });
 }
