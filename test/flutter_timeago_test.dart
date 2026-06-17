@@ -233,4 +233,20 @@ void main() {
       expect(locale.minutesAgo(15), '15m ago');
     });
   });
+
+  group('referenceTime defaults to DateTime.now() —', () {
+    test('omitting referenceTime still returns a non-empty string', () {
+      final recent = DateTime.now().subtract(const Duration(minutes: 5));
+      final result = recent.toTimeagoFormat(); // no referenceTime passed
+      expect(result, isNotEmpty);
+      expect(result, contains('m ago')); // will be "5m ago" give or take
+    });
+
+    test('null with no referenceTime returns unknownTime', () {
+      expect(
+        (null as DateTime?).toTimeagoFormat(),
+        'Unknown time',
+      );
+    });
+  });
 }
