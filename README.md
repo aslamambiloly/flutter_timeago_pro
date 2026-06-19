@@ -36,7 +36,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^2.0.3
+  flutter_timeago_pro: ^2.0.4
 ```
 
 Then run:
