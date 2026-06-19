@@ -1,3 +1,7 @@
+## 2.0.3
+
+* Enhanced documentation
+
 ## 2.0.2
 
 * Added a description screenshot for recognizing the package
