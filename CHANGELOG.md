@@ -1,3 +1,7 @@
+## 2.0.2
+
+* Added a description screenshot for recognizing the package
+
 ## 2.0.1
 
 * Added topics for a better indexing
