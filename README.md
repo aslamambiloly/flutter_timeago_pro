@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/aslamambiloly/flutter_timeago_pro/graph/badge.svg?token=9O1DN1Z5GT)](https://codecov.io/gh/aslamambiloly/flutter_timeago_pro)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ab02ba0bd1804555927995bbd1e6dfa7)](https://app.codacy.com/gh/aslamambiloly/flutter_timeago_pro/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-[![Support me on Ko-fi](https://raw.githubusercontent.com/aslamambiloly/flutter_timeago_pro/main/doc/mandhi.png)](https://ko-fi.com/N7K021PF59)
+[![Support me on Ko-fi](https://raw.githubusercontent.com/aslamambiloly/flutter_timeago_pro/main/doc/mandhi2.png)](https://ko-fi.com/N7K021PF59)
 
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
@@ -36,7 +36,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^2.0.5
+  flutter_timeago_pro: ^2.0.6
 ```
 
 Then run:
