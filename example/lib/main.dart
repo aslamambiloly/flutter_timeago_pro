@@ -23,7 +23,7 @@ class _DemoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final now = DateTime.now();
 
-    final timestamps = <(String, DateTime?)>[
+    final pastTimestamps = <(String, DateTime?)>[
       ('null value', null),
       ('20 seconds ago', now.subtract(const Duration(seconds: 20))),
       ('45 minutes ago', now.subtract(const Duration(minutes: 45))),
@@ -35,11 +35,25 @@ class _DemoPage extends StatelessWidget {
       ('Different year', DateTime(now.year - 2, 3, 5, 14, 30)),
     ];
 
+    final futureTimestamps = <(String, DateTime?)>[
+      ('30 seconds from now', now.add(const Duration(seconds: 30))),
+      ('45 minutes from now', now.add(const Duration(minutes: 45))),
+      ('3 hours from now (today)', now.add(const Duration(hours: 3))),
+      ('Tomorrow', now.add(const Duration(days: 1))),
+      ('3 days from now', now.add(const Duration(days: 3))),
+      ('6 days from now', now.add(const Duration(days: 6))),
+      ('10 days from now (same year)', now.add(const Duration(days: 10))),
+      ('Different year (future)', DateTime(now.year + 2, 3, 5, 14, 30)),
+    ];
+
     const idLocale = TimestampLocale(
       justNow: 'Baru saja',
       yesterday: 'Kemarin',
+      tomorrow: 'Besok',
       minutesAgoSuffix: 'm lalu',
       hoursAgoSuffix: 'j lalu',
+      minutesFromNowPrefix: 'dalam ',
+      hoursFromNowPrefix: 'dalam ',
       unknownTime: 'Waktu tidak diketahui',
     );
 
@@ -48,36 +62,64 @@ class _DemoPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _SectionHeader('Default (showTimeForOveraged: true)'),
-          for (final (label, dt) in timestamps)
+          _SectionHeader('Past Dates — Default (showTimeForOveraged: true)'),
+          for (final (label, dt) in pastTimestamps)
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(),
             ),
           const SizedBox(height: 24),
-          _SectionHeader('showTimeForOveraged: false'),
-          for (final (label, dt) in timestamps)
+          _SectionHeader('Future Dates — Default (showTimeForOveraged: true)'),
+          for (final (label, dt) in futureTimestamps)
+            _TimestampTile(
+              label: label,
+              value: dt.toTimeagoFormat(),
+            ),
+          const SizedBox(height: 24),
+          _SectionHeader('Past Dates — showTimeForOveraged: false'),
+          for (final (label, dt) in pastTimestamps)
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(showTimeForOveraged: false),
             ),
           const SizedBox(height: 24),
-          _SectionHeader('Custom locale (Bahasa Indonesia)'),
-          for (final (label, dt) in timestamps)
+          _SectionHeader('Future Dates — showTimeForOveraged: false'),
+          for (final (label, dt) in futureTimestamps)
+            _TimestampTile(
+              label: label,
+              value: dt.toTimeagoFormat(showTimeForOveraged: false),
+            ),
+          const SizedBox(height: 24),
+          _SectionHeader('Custom locale (Bahasa Indonesia) — Past'),
+          for (final (label, dt) in pastTimestamps)
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(locale: idLocale),
             ),
           const SizedBox(height: 24),
-          _SectionHeader('Custom timeago limit (2 hours)'),
-          for (final (label, dt) in timestamps)
+          _SectionHeader('Custom locale (Bahasa Indonesia) — Future'),
+          for (final (label, dt) in futureTimestamps)
+            _TimestampTile(
+              label: label,
+              value: dt.toTimeagoFormat(locale: idLocale),
+            ),
+          const SizedBox(height: 24),
+          _SectionHeader('Custom timeago limit (2 hours) — Past'),
+          for (final (label, dt) in pastTimestamps)
+            _TimestampTile(
+              label: label,
+              value: dt.toTimeagoFormat(timeagoLimit: const Duration(hours: 2)),
+            ),
+          const SizedBox(height: 24),
+          _SectionHeader('Custom timeago limit (2 hours) — Future'),
+          for (final (label, dt) in futureTimestamps)
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(timeagoLimit: const Duration(hours: 2)),
             ),
           const SizedBox(height: 24),
           _SectionHeader('24-hour clock (timePattern: "HH:mm")'),
-          for (final (label, dt) in timestamps)
+          for (final (label, dt) in [...pastTimestamps, ...futureTimestamps])
             _TimestampTile(
               label: label,
               value: dt.toTimeagoFormat(timePattern: 'HH:mm'),

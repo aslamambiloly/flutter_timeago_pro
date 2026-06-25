@@ -1,3 +1,15 @@
+## 3.0.0
+
+* **MAJOR UPDATE**: Added complete support for future dates
+* Added `tomorrow` field to `TimestampLocale` for localizing "Tomorrow"
+* Added `minutesFromNowPrefix` and `hoursFromNowPrefix` fields to `TimestampLocale`
+* Added `minutesFromNow()` and `hoursFromNow()` methods to `TimestampLocale`
+* Future dates now display as "in 45m", "in 2h", "Tomorrow", etc.
+* Enhanced example app to showcase both past and future date formatting
+* Added comprehensive test coverage for future date scenarios (53 total tests)
+* Updated README with future date examples and updated API documentation
+* **Breaking Change**: `TimestampLocale` constructor has new optional parameters (backward compatible with default values)
+
 ## 2.0.6
 
 * Updated documentation

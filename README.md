@@ -11,16 +11,19 @@
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
 
-Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past the date is:
+Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past **or future** the date is:
 
 
-| Age | Output | Output when `showTimeForOveraged: false` |
+| Age/Time | Output | Output when `showTimeForOveraged: false` |
 |---|---|---|
 | < 1 minute | `Just now` | `Just now` |
-| < 1 hour | `45m ago` | `45m ago` |
+| < 1 hour (past) | `45m ago` | `45m ago` |
+| < 1 hour (future) | `in 45m` | `in 45m` |
 | Today | `02:30 PM` | `02:30 PM` |
 | Yesterday | `Yesterday, 02:30 PM` | `Yesterday` |
+| Tomorrow | `Tomorrow, 02:30 PM` | `Tomorrow` |
 | 2–6 days ago | `Friday, 02:30 PM` | `Friday` |
+| 2–6 days ahead | `Monday, 02:30 PM` | `Monday` |
 | Same year, > 1 week | `15 Jan, 02:30 PM` | `15 Jan` |
 | Different year | `15 Jan 2025, 02:30 PM` | `15 Jan 2025` |
 | `null` | `Unknown time` | `Unknown time` |
@@ -36,7 +39,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^2.0.6
+  flutter_timeago_pro: ^3.0.0
 ```
 
 Then run:
@@ -49,10 +52,15 @@ flutter pub get
 ```dart
 import 'package:flutter_timeago_pro/flutter_timeago_pro.dart';
 
-// In any widget:
-final dateTime = DateTime.now().subtract(const Duration(minutes: 25));
-Text(dateTime.toTimeagoFormat())
+// Past dates:
+final pastDate = DateTime.now().subtract(const Duration(minutes: 25));
+Text(pastDate.toTimeagoFormat())
 // → "25m ago"
+
+// Future dates:
+final futureDate = DateTime.now().add(const Duration(minutes: 45));
+Text(futureDate.toTimeagoFormat())
+// → "in 45m"
 ```
 
 ### Hide the time portion
@@ -84,8 +92,11 @@ dateTime.toTimeagoFormat(timePattern: 'HH:mm');
 const bahasa = TimestampLocale(
   justNow: 'Baru saja',
   yesterday: 'Kemarin',
+  tomorrow: 'Besok',
   minutesAgoSuffix: 'm lalu',
   hoursAgoSuffix: 'j lalu',
+  minutesFromNowPrefix: 'dalam ',
+  hoursFromNowPrefix: 'dalam ',
   unknownTime: 'Waktu tidak diketahui',
 );
 
@@ -131,6 +142,9 @@ const TimestampLocale({
   String minutesAgoSuffix = 'm ago',
   String hoursAgoSuffix = 'h ago',
   String yesterday = 'Yesterday',
+  String tomorrow = 'Tomorrow',
+  String minutesFromNowPrefix = 'in ',
+  String hoursFromNowPrefix = 'in ',
   String unknownTime = 'Unknown time',
 });
 ```

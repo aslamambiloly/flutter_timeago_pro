@@ -4,15 +4,18 @@ import 'timestamp_locale.dart';
 
 /// Human-friendly timestamp formatting extension on nullable [DateTime].
 ///
-/// The output adapts automatically based on how far in the past [this] is:
+/// The output adapts automatically based on how far in the past or future [this] is:
 ///
-/// | Age                     | Example output           |
+/// | Age/Time                | Example output           |
 /// |-------------------------|--------------------------|
 /// | < 1 minute              | `Just now`               |
-/// | < 1 hour                | `45m ago`                |
+/// | < 1 hour (past)         | `45m ago`                |
+/// | < 1 hour (future)       | `in 45m`                 |
 /// | Today                   | `02:30 PM`               |
 /// | Yesterday               | `Yesterday, 02:30 PM`    |
+/// | Tomorrow                | `Tomorrow, 02:30 PM`     |
 /// | 2–6 days ago (same wk)  | `Friday, 02:30 PM`       |
+/// | 2–6 days ahead (same wk)| `Monday, 02:30 PM`       |
 /// | Same year, > 1 week     | `15 Jan, 02:30 PM`       |
 /// | Different year          | `15 Jan 2024, 02:30 PM`  |
 /// | null                    | `Unknown time`           |
@@ -69,19 +72,25 @@ extension DateTimeFormatting on DateTime? {
     final dateTime = this!;
     final now = referenceTime ?? DateTime.now();
     final difference = now.difference(dateTime);
+    final isFuture = difference.isNegative;
+    final absoluteDifference = difference.abs();
     final timeFormat = DateFormat(timePattern).format(dateTime);
 
-    // ── < 1 minute ──────────────────────────────────────────────────────────
-    if (difference.inMinutes < 1) {
+    // ── < 1 minute (past or future) ─────────────────────────────────────────
+    if (absoluteDifference.inMinutes < 1) {
       return locale.justNow;
     }
 
     // ── Less than timeagoLimit (default: 1 hour) ────────────────────────────
-    if (difference.compareTo(timeagoLimit) < 0) {
-      if (difference.inHours < 1) {
-        return locale.minutesAgo(difference.inMinutes);
+    if (absoluteDifference.compareTo(timeagoLimit) < 0) {
+      if (absoluteDifference.inHours < 1) {
+        return isFuture
+            ? locale.minutesFromNow(absoluteDifference.inMinutes)
+            : locale.minutesAgo(absoluteDifference.inMinutes);
       } else {
-        return locale.hoursAgo(difference.inHours);
+        return isFuture
+            ? locale.hoursFromNow(absoluteDifference.inHours)
+            : locale.hoursAgo(absoluteDifference.inHours);
       }
     }
 
@@ -90,6 +99,34 @@ extension DateTimeFormatting on DateTime? {
       return timeFormat; // e.g. "02:30 PM"
     }
 
+    // For future dates
+    if (isFuture) {
+      // ── Tomorrow ───────────────────────────────────────────────────────────
+      final tomorrow = now.add(const Duration(days: 1));
+      if (DateUtils.isSameDay(dateTime, tomorrow)) {
+        return showTimeForOveraged
+            ? '${locale.tomorrow}, $timeFormat'
+            : locale.tomorrow;
+      }
+
+      // ── Within the next 7 days (same week feel) ────────────────────────────
+      if (absoluteDifference.inDays < 7) {
+        final weekday = DateFormat('EEEE').format(dateTime); // "Monday"
+        return showTimeForOveraged ? '$weekday, $timeFormat' : weekday;
+      }
+
+      // ── Same calendar year ─────────────────────────────────────────────────
+      if (dateTime.year == now.year) {
+        final date = DateFormat('d MMM').format(dateTime); // "15 Jan"
+        return showTimeForOveraged ? '$date, $timeFormat' : date;
+      }
+
+      // ── Different year ─────────────────────────────────────────────────────
+      final date = DateFormat('d MMM yyyy').format(dateTime); // "15 Jan 2024"
+      return showTimeForOveraged ? '$date, $timeFormat' : date;
+    }
+
+    // For past dates
     // ── Yesterday ────────────────────────────────────────────────────────────
     final yesterday = now.subtract(const Duration(days: 1));
     if (DateUtils.isSameDay(dateTime, yesterday)) {
@@ -99,7 +136,7 @@ extension DateTimeFormatting on DateTime? {
     }
 
     // ── Within the past 7 days (same week feel) ──────────────────────────────
-    if (difference.inDays < 7) {
+    if (absoluteDifference.inDays < 7) {
       final weekday = DateFormat('EEEE').format(dateTime); // "Monday"
       return showTimeForOveraged ? '$weekday, $timeFormat' : weekday;
     }
