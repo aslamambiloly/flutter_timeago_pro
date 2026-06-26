@@ -90,7 +90,7 @@ packages:
       sha256: "1dbc140bb5a23c75ea9c4811222756104fbcd1a27173f0c34ca01e16bea473c1"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.20"
+    version: "3.0.10"
   leak_tracker_testing:
     dependency: transitive
     description:

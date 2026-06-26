@@ -1,6 +1,6 @@
-## 3.0.1
+## 3.0.2
 
-* Trigger analysis pipeline re-run
+* Re-trigger analysis pipeline re-run
 
 ## 3.0.1
 
