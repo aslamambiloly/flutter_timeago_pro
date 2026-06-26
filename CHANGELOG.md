@@ -2,6 +2,10 @@
 
 * Trigger analysis pipeline re-run
 
+## 3.0.1
+
+* Trigger analysis pipeline re-run
+
 ## 3.0.0
 
 * **MAJOR UPDATE**: Added complete support for future dates

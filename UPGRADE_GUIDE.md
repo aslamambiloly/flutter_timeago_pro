@@ -1,6 +1,6 @@
-# Upgrade Guide: v2.x → v3.0.1
+# Upgrade Guide: v2.x → v3.0.2
 
-## What's New in v3.0.1
+## What's New in v3.0.2
 
 The `flutter_timeago_pro` package now supports **future dates** in addition to past dates! 
 
@@ -51,7 +51,7 @@ const myLocale = TimestampLocale(
 );
 ```
 
-#### After (v3.0.1) — Optional Enhancement
+#### After (v3.0.2) — Optional Enhancement
 ```dart
 const myLocale = TimestampLocale(
   justNow: 'Baru saja',
@@ -90,4 +90,4 @@ If you encounter any issues or have questions about the upgrade:
 
 ---
 
-**Note**: This is a major version bump (v3.0.1) due to the new `TimestampLocale` parameters, but existing code will continue to work without modifications thanks to default values.
+**Note**: This is a major version bump (v3.0.2) due to the new `TimestampLocale` parameters, but existing code will continue to work without modifications thanks to default values.
