@@ -1,3 +1,7 @@
+## 3.0.3
+
+* Updated documentation
+
 ## 3.0.2
 
 * Re-trigger analysis pipeline re-run
