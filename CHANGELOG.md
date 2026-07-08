@@ -1,6 +1,6 @@
 ## 3.0.4
 
-* Updated documentation
+* Updated description
 
 ## 3.0.3
 
