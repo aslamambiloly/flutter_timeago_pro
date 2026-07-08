@@ -1,12 +1,13 @@
 name: flutter_timeago_pro
 description: >
-  Formats DateTime into human-friendly timestamps like "Just now", "5m ago", "Monday", or "12 Jan 2024" automatically based on how far past or future the DateTime is.
-version: 3.0.3
+  Formats DateTime? into fuzzy timestamps (e.g. "Just now", "5m ago" ) intelligently based on how far the DateTime? is.
+version: 3.0.4
 homepage: https://github.com/aslamambiloly/flutter_timeago_pro
 issue_tracker: https://github.com/aslamambiloly/flutter_timeago_pro/issues
 screenshots:
   - description: 'Sample formatted time used in a real world scenario'
     path: doc/cover.png
+
 
 topics:
   - datetime
@@ -16,7 +17,7 @@ topics:
   - text
   
 environment:
-  sdk: '>=3.0.3 <4.0.0'
+  sdk: '>=3.0.4 <4.0.0'
   flutter: '>=3.10.0'
 
 dependencies:
