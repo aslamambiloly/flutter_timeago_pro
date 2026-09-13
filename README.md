@@ -27,8 +27,10 @@ A Flutter extension that formats `DateTime?` values into **human-friendly, conte
 Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past **or future** the date is:
 
 
+<div align="center">
+
 | Age/Time | Output | Output when `showTimeForOveraged: false` |
-|---|---|---|
+|:---:|:---:|:---:|
 | < 1 minute | `Just now` | `Just now` |
 | < 1 hour (past) | `45m ago` | `45m ago` |
 | < 1 hour (future) | `in 45m` | `in 45m` |
@@ -40,6 +42,8 @@ Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_ti
 | Same year, > 1 week | `15 Jan, 02:30 PM` | `15 Jan` |
 | Different year | `15 Jan 2025, 02:30 PM` | `15 Jan 2025` |
 | `null` | `Unknown time` | `Unknown time` |
+
+</div>
 
 
 ## Why not `timeago` or `jiffy`?
