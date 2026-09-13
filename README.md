@@ -13,13 +13,7 @@
   <a href="https://ko-fi.com/N7K021PF59"><img src="https://raw.githubusercontent.com/aslamambiloly/flutter_timeago_pro/main/doc/coffee.png" alt="Support me on Ko-fi" width="400"></a>
 </p>
 
-<!-- [![pub version](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
-[![codecov](https://codecov.io/gh/aslamambiloly/flutter_timeago_pro/graph/badge.svg?token=9O1DN1Z5GT)](https://codecov.io/gh/aslamambiloly/flutter_timeago_pro)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ab02ba0bd1804555927995bbd1e6dfa7)](https://app.codacy.com/gh/aslamambiloly/flutter_timeago_pro/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-[![Support me on Ko-fi](https://raw.githubusercontent.com/aslamambiloly/flutter_timeago_pro/main/doc/pizzaSmall.png)](https://ko-fi.com/N7K021PF59) -->
 
 
 A Flutter extension that formats `DateTime?` values into **human-friendly, context-aware timestamps** — the way notification apps, chat apps, and social feeds actually show time.
@@ -60,7 +54,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_timeago_pro: ^3.0.4
+  flutter_timeago_pro: ^3.0.5
 ```
 
 Then run:
