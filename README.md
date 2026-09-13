@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://ko-fi.com/N7K021PF59"><img src="https://raw.githubusercontent.com/aslamambiloly/flutter_timeago_pro/main/doc/coffee.png" alt="Support me on Ko-fi" width="400"></a>
+  <a href="https://ko-fi.com/N7K021PF59"><img src="https://raw.githubusercontent.com/aslamambiloly/flutter_timeago_pro/doc/coffee.png" alt="Support me on Ko-fi" width="400"></a>
 </p>
 
 <!-- [![pub version](https://img.shields.io/pub/v/flutter_timeago_pro.svg)](https://pub.dev/packages/flutter_timeago_pro)
