@@ -1,7 +1,7 @@
 name: flutter_timeago_pro
 description: >
   Formats DateTime? into fuzzy timestamps (e.g. "Just now", "5m ago" ) intelligently based on how far the DateTime? is.
-version: 3.0.5
+version: 3.0.6
 homepage: https://github.com/aslamambiloly/flutter_timeago_pro
 issue_tracker: https://github.com/aslamambiloly/flutter_timeago_pro/issues
 screenshots:

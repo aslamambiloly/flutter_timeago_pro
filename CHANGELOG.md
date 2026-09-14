@@ -1,3 +1,7 @@
+## 3.0.6
+
+* Updated screenshots
+
 ## 3.0.5
 
 * Updated screenshots to README.md
