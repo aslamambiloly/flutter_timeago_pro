@@ -25,6 +25,7 @@ Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_ti
   <img src="doc/4.png" width="49%" alt="Preview 2" />
 </p>
 
+
 <div align="center">
 
 | Age/Time | Output | Output when `showTimeForOveraged: false` |
@@ -44,11 +45,10 @@ Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_ti
 </div>
 
 <p align="center">
-  <!-- <img src="doc/1.png" width="49%" alt="Preview 1" /> -->
-  <img src="doc/2.png" width="49%" alt="Preview 2" />
+  <img src="doc/2.png" width="49%" alt="Preview 1" />
+  <img src="doc/1.png" width="49%" alt="Preview 2" />
 </p>
 
-<div align="center">
 
 
 ## Why not `timeago` or `jiffy`?
