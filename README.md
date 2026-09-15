@@ -21,8 +21,10 @@ A Flutter extension that formats `DateTime?` values into **human-friendly, conte
 Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_timeago_pro` adapts intelligently based on how far in the past **or future** the date is:
 
 <p align="center">
-  <img src="doc/3.png" width="49%" alt="Preview 1" />
-  <img src="doc/4.png" width="49%" alt="Preview 2" />
+  <img src="doc/3.png" width="32%" alt="Preview 1" />
+  <img src="doc/4.png" width="33%" alt="Preview 2" />
+  <img src="doc/2.png" width="32%" alt="Preview 3" />
+
 </p>
 
 
@@ -43,11 +45,6 @@ Unlike packages that say *"48 hours ago"* or *"7 days ago"* forever, `flutter_ti
 | `null` | `Unknown time` | `Unknown time` |
 
 </div>
-
-<p align="center">
-  <img src="doc/2.png" width="49%" alt="Preview 1" />
-  <!-- <img src="doc/1.png" width="49%" alt="Preview 2" /> -->
-</p>
 
 
 
