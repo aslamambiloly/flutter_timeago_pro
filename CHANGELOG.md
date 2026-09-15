@@ -1,3 +1,8 @@
+## 3.0.7
+
+* Enhanced the `README.md` with new screenshots
+* Updated package description for better visibility
+
 ## 3.0.6
 
 * Updated screenshots
